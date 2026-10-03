@@ -141,6 +141,9 @@ ON translations FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "Users can view their own or explicitly shared translations." 
 ON translations FOR SELECT USING (auth.uid() = user_id OR is_shared = true);
 
+CREATE POLICY "Users can update their own translations (for sharing)." 
+ON translations FOR UPDATE USING (auth.uid() = user_id);
+
 CREATE POLICY "Users can delete their own translations." 
 ON translations FOR DELETE USING (auth.uid() = user_id);
 ```

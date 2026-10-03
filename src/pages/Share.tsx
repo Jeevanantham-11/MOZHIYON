@@ -16,7 +16,7 @@ export default function Share() {
       if (!id) return;
       const { data, error } = await supabase
         .from('translations')
-        .select('*')
+        .select('english_text, tamil_text, created_at')
         .eq('id', id)
         .single();
       
