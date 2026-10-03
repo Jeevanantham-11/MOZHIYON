@@ -22,7 +22,7 @@ interface TranslationRecord {
 }
 
 export default function Dashboard({ session }: { session: any }) {
-  const [inputText, setInputText] = useState(() => localStorage.getItem('mozhiyon_draft') || '');
+  const [inputText, setInputText] = useState(() => localStorage.getItem(`mozhiyon_draft_${session?.user?.id}`) || '');
   const [translatedText, setTranslatedText] = useState('');
   const [isTranslating, setIsTranslating] = useState(false);
   const [history, setHistory] = useState<TranslationRecord[]>([]);
@@ -35,7 +35,7 @@ export default function Dashboard({ session }: { session: any }) {
   // Profile Customization
   const [showProfile, setShowProfile] = useState(false);
   const [displayName, setDisplayName] = useState(() => {
-    const saved = localStorage.getItem('mozhiyon_name');
+    const saved = localStorage.getItem(`mozhiyon_name_${session?.user?.id}`);
     if (saved) return saved;
     const emailName = session?.user?.email?.split('@')[0] || 'User';
     return emailName.replace(/[._-]/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase());
@@ -97,8 +97,8 @@ export default function Dashboard({ session }: { session: any }) {
 
   // Auto-Save Draft
   useEffect(() => {
-    localStorage.setItem('mozhiyon_draft', inputText);
-  }, [inputText]);
+    localStorage.setItem(`mozhiyon_draft_${session?.user?.id}`, inputText);
+  }, [inputText, session?.user?.id]);
 
   // Global Keyboard Shortcuts (Swap)
   useEffect(() => {
@@ -626,6 +626,9 @@ export default function Dashboard({ session }: { session: any }) {
         handleLogout={handleLogout} 
       />
 
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center pointer-events-none z-10 w-full px-4">
+        <p className="text-[9px] text-white/20 font-mono tracking-widest uppercase">Privacy Notice: Translation and audio generation are powered by public Google endpoints.</p>
+      </div>
     </div>
   );
 }

@@ -131,14 +131,14 @@ CREATE TABLE translations (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Enable Row Level Security (RLS) so users only see their own history
+-- Enable Row Level Security (RLS)
 ALTER TABLE translations ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can insert their own translations." 
 ON translations FOR INSERT WITH CHECK (auth.uid() = user_id);
 
-CREATE POLICY "Users can view their own translations." 
-ON translations FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Anyone can view shared translations by ID." 
+ON translations FOR SELECT USING (true);
 
 CREATE POLICY "Users can delete their own translations." 
 ON translations FOR DELETE USING (auth.uid() = user_id);

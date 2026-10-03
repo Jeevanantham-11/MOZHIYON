@@ -33,7 +33,7 @@ export default function ProfileModal({ showProfile, setShowProfile, displayName,
                   value={displayName}
                   onChange={(e) => {
                     setDisplayName(e.target.value);
-                    localStorage.setItem('mozhiyon_name', e.target.value);
+                    localStorage.setItem(`mozhiyon_name_${session?.user?.id}`, e.target.value);
                   }}
                   className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#FFEB3B]/50 font-bold"
                 />
