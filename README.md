@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
   <h1>MOZHIYON</h1>
   <p><strong>Premium, Enterprise-Grade English to Tamil Translation Platform</strong></p>
 
@@ -26,21 +26,21 @@ The following diagram illustrates the data flow between the Client interface, th
 
 ```mermaid
 graph TD
-    subgraph Client [Client-Side Architecture (React + Vite)]
-        UI[Mozhiyon Interface]
-        Auth[Supabase Auth Session]
-        Tanglish[Tanglish Processing Engine]
+    subgraph Client ["Client-Side Architecture (React + Vite)"]
+        UI["Mozhiyon Interface"]
+        Auth["Supabase Auth Session"]
+        Tanglish["Tanglish Processing Engine"]
     end
 
-    subgraph External_APIs [Public Keyless APIs]
-        GoogleTrans[Google Translate GTX]
-        GoogleInput[Google Input Tools]
-        FreeDict[Free Dictionary API]
+    subgraph External_APIs ["Public Keyless APIs"]
+        GoogleTrans["Google Translate GTX"]
+        GoogleInput["Google Input Tools"]
+        FreeDict["Free Dictionary API"]
     end
 
-    subgraph Cloud_Backend [Supabase Backend]
-        DB[(PostgreSQL Database)]
-        RLS[Row Level Security]
+    subgraph Cloud_Backend ["Supabase Backend"]
+        DB[("PostgreSQL Database")]
+        RLS["Row Level Security"]
     end
 
     %% Data Flow
