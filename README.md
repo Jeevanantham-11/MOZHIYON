@@ -1,5 +1,5 @@
-<div align="center">
-  <h1>MOZHIYON (மொழியோன்)</h1>
+﻿<div align="center">
+  <h1>MOZHIYON</h1>
   <p><strong>Premium, Enterprise-Grade English to Tamil Translation Platform</strong></p>
 
   ![Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen) 
@@ -59,7 +59,7 @@ graph TD
 ## Comprehensive Feature Breakdown
 
 ### 1. The Tanglish Engine (Phonetic Typing)
-Typing natively in Tamil can be difficult for many users. Mozhiyon integrates a phonetic conversion engine utilizing the Google Input Tools API. Users can simply type in "Tanglish" (e.g., typing "vanakkam"), and the system will instantly and dynamically convert it to the native Tamil script ("வணக்கம்") before translation.
+Typing natively in Tamil can be difficult for many users. Mozhiyon integrates a phonetic conversion engine utilizing the Google Input Tools API. Users can simply type in "Tanglish" (e.g., typing "vanakkam"), and the system will instantly and dynamically convert it to the native Tamil script  before translation.
 
 ### 2. Cloud-Synced Translation History
 Every translation is securely backed up to the cloud. By integrating Supabase (PostgreSQL) and Supabase Auth, each user gets a private workspace. Users can access past translations, clear their history, and maintain their workflow across different devices.
