@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#F9F9F6] text-[#111111] antialiased;
+  }
+}
+
+/* Custom Driver.js Theme */
+.driverjs-theme { background-color: #111111 !important; color: #ffffff !important; border: 1px solid rgba(255, 235, 59, 0.3) !important; border-radius: 16px !important; box-shadow: 0 0 30px rgba(255, 235, 59, 0.2) !important; }
+.driverjs-theme .driver-popover-title { color: #FFEB3B !important; font-family: serif !important; font-size: 1.25rem !important; }
+.driverjs-theme .driver-popover-description { color: #a3a3a3 !important; }
+.driverjs-theme .driver-popover-footer button { background-color: #FFEB3B !important; color: #600000 !important; border: none !important; border-radius: 8px !important; font-weight: bold !important; text-shadow: none !important; }
