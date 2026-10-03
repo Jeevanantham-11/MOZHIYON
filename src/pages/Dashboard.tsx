@@ -210,8 +210,9 @@ export default function Dashboard({ session }: { session: any }) {
       // Glossary Protection (Brand Memory)
       let query = inputText;
       
+      const escapeRegExp = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       glossary.forEach((word, idx) => {
-        query = query.replace(new RegExp(`\\b${word}\\b`, 'gi'), `__KEEP_${idx}__`);
+        query = query.replace(new RegExp(`\\b${escapeRegExp(word)}\\b`, 'gi'), `__KEEP_${idx}__`);
       });
 
       // Tone & Prompt Appending
@@ -265,8 +266,13 @@ export default function Dashboard({ session }: { session: any }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     if (!currentId) return showToast('Please translate text first to share.', 'error');
+    
+    // Explicitly mark this translation as shared in the secure backend
+    const { error } = await supabase.from('translations').update({ is_shared: true }).eq('id', currentId);
+    if (error) return showToast('Failed to enable sharing for this document.', 'error');
+
     const url = `${window.location.origin}/share/${currentId}`;
     navigator.clipboard.writeText(url);
     showToast('Public link copied to clipboard!', 'success');
@@ -327,6 +333,10 @@ export default function Dashboard({ session }: { session: any }) {
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      showToast('File too large (max 2MB)', 'error');
+      return;
+    }
     if (file.name.endsWith('.txt')) {
       const text = await file.text();
       setInputText(text);
@@ -627,7 +637,7 @@ export default function Dashboard({ session }: { session: any }) {
       />
 
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center pointer-events-none z-10 w-full px-4">
-        <p className="text-[9px] text-white/20 font-mono tracking-widest uppercase">Privacy Notice: Translation and audio generation are powered by public Google endpoints.</p>
+        <p className="text-[9px] text-white/30 font-mono tracking-widest uppercase">Privacy Notice: Translation, phonetic conversion, dictionary, and audio use external APIs. History is saved to Supabase.</p>
       </div>
     </div>
   );
