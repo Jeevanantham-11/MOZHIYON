@@ -20,6 +20,36 @@ To optimize operational costs and prevent API rate-limiting, Mozhiyon utilizes a
 
 ---
 
+## Interface Showcase
+
+<div align="center">
+  <img src="screenshots/landing.png" width="48%" alt="Landing Page" />
+  <img src="screenshots/features.png" width="48%" alt="Features" />
+  <br/><br/>
+  <img src="screenshots/auth.png" width="48%" alt="Secure Authentication" />
+  <img src="screenshots/dashboard.png" width="48%" alt="Translation Workspace" />
+</div>
+
+### Interactive Feature Tour
+<div align="center">
+  <img src="screenshots/tour-profile.png" width="24%" alt="Interactive Tour Profile" />
+  <img src="screenshots/tour-glossary.png" width="24%" alt="Brand Memory Glossary" />
+  <img src="screenshots/tour-history.png" width="24%" alt="History Vault" />
+  <img src="screenshots/tour-tone.png" width="24%" alt="Contextual Tone" />
+  <br/><br/>
+  <img src="screenshots/tour-studio.png" width="24%" alt="Prompt Studio" />
+  <img src="screenshots/tour-voice.png" width="24%" alt="Voice Dictation" />
+  <img src="screenshots/tour-parse.png" width="24%" alt="Document Parsing" />
+  <img src="screenshots/tour-swap.png" width="24%" alt="Language Swap" />
+  <br/><br/>
+  <img src="screenshots/tour-mp3.png" width="24%" alt="Export MP3" />
+  <img src="screenshots/tour-srt.png" width="24%" alt="Export SRT" />
+  <img src="screenshots/tour-pdf.png" width="24%" alt="Export PDF" />
+  <img src="screenshots/tour-pronounce.png" width="24%" alt="Native Pronunciation" />
+</div>
+
+---
+
 ## System Architecture
 
 The following diagram illustrates the data flow between the Client interface, the external zero-cost APIs, and the secure Supabase database backend:
